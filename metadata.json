@@ -1,0 +1,6 @@
+{
+  "name": "Pradip Paneru Portfolio",
+  "description": "Institutional portfolio of Pradip Paneru, AI Security Researcher, Entrepreneur, and Educator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
