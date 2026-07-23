@@ -1,4 +1,5 @@
 import { useState, useEffect, ChangeEvent } from "react";
+import defaultPortrait from "./assets/images/pradip_portrait.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Shield,
@@ -47,7 +48,7 @@ export default function App() {
   const [customName, setCustomName] = useState<string>("");
   
   // Interactive Custom Photo persistence using LocalStorage
-  const [personalPhoto, setPersonalPhoto] = useState<string>("src/assets/images/pradip_paneru_potrait_1784407924824.png");
+  const [personalPhoto, setPersonalPhoto] = useState<string>(defaultPortrait);
   const [isCustomPhoto, setIsCustomPhoto] = useState<boolean>(false);
 
   // Stepped Skill Matrix State
@@ -57,8 +58,15 @@ export default function App() {
   useEffect(() => {
     const savedPhoto = localStorage.getItem("pradip_custom_photo");
     if (savedPhoto) {
-      setPersonalPhoto(savedPhoto);
-      setIsCustomPhoto(true);
+      if (savedPhoto.startsWith("data:image/")) {
+        setPersonalPhoto(savedPhoto);
+        setIsCustomPhoto(true);
+      } else {
+        // Clear stale local path references from older builds
+        localStorage.removeItem("pradip_custom_photo");
+        setPersonalPhoto(defaultPortrait);
+        setIsCustomPhoto(false);
+      }
     }
   }, []);
 
@@ -78,7 +86,7 @@ export default function App() {
 
   const resetPhoto = () => {
     localStorage.removeItem("pradip_custom_photo");
-    setPersonalPhoto("src/assets/images/pradip_paneru_potrait_1784407924824.png");
+    setPersonalPhoto(defaultPortrait);
     setIsCustomPhoto(false);
   };
 
@@ -255,8 +263,8 @@ export default function App() {
                     className="w-full h-full object-cover grayscale contrast-115 hover:grayscale-0 transition-all duration-700"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
-                      // Fallback if local image doesn't load
-                      (e.target as HTMLImageElement).src = "https://picsum.photos/seed/pradip/400/533";
+                      // Fallback to default bundled portrait if image fails
+                      (e.target as HTMLImageElement).src = defaultPortrait;
                     }}
                   />
 
