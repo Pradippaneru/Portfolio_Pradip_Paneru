@@ -1,5 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import portrait from "./assets/images/Pradip_Potrait.png";
 import {
   Shield,
   Briefcase,
@@ -47,7 +48,7 @@ export default function App() {
   const [customName, setCustomName] = useState<string>("");
   
   // Interactive Custom Photo persistence using LocalStorage
-  const [personalPhoto, setPersonalPhoto] = useState<string>("src/assets/images/Pradip_Potrait.png");
+  const [personalPhoto, setPersonalPhoto] = useState(portrait);
   const [isCustomPhoto, setIsCustomPhoto] = useState<boolean>(false);
 
   // Stepped Skill Matrix State
@@ -78,7 +79,7 @@ export default function App() {
 
   const resetPhoto = () => {
     localStorage.removeItem("pradip_custom_photo");
-    setPersonalPhoto("src/assets/images/Pradip_Potrait.png");
+    setPersonalPhoto(portrait);
     setIsCustomPhoto(false);
   };
 
