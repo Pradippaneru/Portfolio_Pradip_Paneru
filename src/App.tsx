@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from "react";
-import defaultPortrait from "./assets/images/pradip_portrait.png";
+import defaultPortrait from "./assets/images/pradip_paneru_potrait_1784407924824.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Shield,
