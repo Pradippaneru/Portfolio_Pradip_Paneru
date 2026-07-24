@@ -47,7 +47,7 @@ export default function App() {
   const [customName, setCustomName] = useState<string>("");
   
   // Interactive Custom Photo persistence using LocalStorage
-  const [personalPhoto, setPersonalPhoto] = useState<string>("src/assets/images/pradip_paneru_potrait_1784407924824.png");
+  const [personalPhoto, setPersonalPhoto] = useState<string>("src/assets/images/Pradip_Potrait.png");
   const [isCustomPhoto, setIsCustomPhoto] = useState<boolean>(false);
 
   // Stepped Skill Matrix State
@@ -78,7 +78,7 @@ export default function App() {
 
   const resetPhoto = () => {
     localStorage.removeItem("pradip_custom_photo");
-    setPersonalPhoto("src/assets/images/pradip_paneru_potrait_1784407924824.png");
+    setPersonalPhoto("src/assets/images/Pradip_Potrait.png");
     setIsCustomPhoto(false);
   };
 
